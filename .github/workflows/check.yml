@@ -1,0 +1,22 @@
+name: check website availibility
+
+on:
+  workflow_dispatch:
+  # Allows the workflow to be manually triggered from the GitHub Actions interface.
+  workflow_call:
+  # Enables this workflow to be called by other workflows within your GitHub repository
+  #schedule:
+  #  - cron: '0 0 * * *'
+  # Automates the workflow to run at a scheduled time, in this case, daily at midnight.
+
+jobs:
+  test:
+    name: google_webcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: execute
+        run: |
+          curl -Is http://google.com | head -n 1
+          # curl -sSf http://example.org > /dev/null
+          # curl -Is http://shellhacks.com | head -n 1
+          # curl -sSf http://google.com | head -n 1
